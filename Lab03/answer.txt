@@ -1,0 +1,32 @@
+Có, Java cho phép tạo nhiều constructor trong cùng một lớp miễn là mỗi constructor có một danh sách tham số khác nhau, được gọi là nạp chồng constructor.
+
+Nếu bạn tạo một constructor cho lớp DigitalVideoDisc với chỉ tham số title và một constructor khác với chỉ tham số category, Java sẽ cho phép điều này vì danh sách tham số là khác nhau.
+
+Nạp chồng constructor cho phép khởi tạo các đối tượng của một lớp theo nhiều cách khác nhau dựa trên các tham số được cung cấp.
+
+Ví dụ:
+public class DigitalVideoDisc {
+    private String title;
+    private String category;
+    private String director;
+    private int length;
+    private float cost;
+
+    // Constructor chỉ có tham số title
+    public DigitalVideoDisc(String title) {
+        this.title = title;
+    }
+
+    // Constructor chỉ có tham số category
+    public DigitalVideoDisc(String category) {
+        this.category = category;
+    }
+
+    // Các constructor khác
+}
+
+
+Tuy nhiên, nếu các constructor có loại tham số và số lượng quá giống nhau sẽ gây ra vấn đề mơ hồ, không rõ ràng.
+
+Ví dụ, nếu có hai constructor cùng nhận một tham số String, Java sẽ không biết gọi constructor nào. 
+Vì vậy, nếu muốn tạo constructor với title và category riêng biệt, ta có thể thêm tham số bổ sung hoặc sử dụng loại dữ liệu khác nhau để tránh nhầm lẫn.

@@ -17,6 +17,7 @@ public class Cart {
         }
     }
 
+
     public void addDigitalVideoDisc(DigitalVideoDisc... dvdArray) {
         for (DigitalVideoDisc dvd : dvdArray) {
             addDigitalVideoDisc(dvd); 
@@ -72,7 +73,6 @@ public class Cart {
             System.out.printf("Total cost: %.2f $\n", totalCost());
             System.out.println("***************************************************");
         }
-
 
         public void searchByID(int id) {
             if (id > 0 && id <= qtyOrdered) {

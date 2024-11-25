@@ -56,3 +56,19 @@ public class Cart {
         }
         return total;
     }
+
+
+        // Print the cart details:
+        
+        public void printCart() {
+            System.out.println("***********************CART***********************");
+            System.out.println("Ordered Items:");
+            for (int i = 0; i < qtyOrdered; i++) {
+                DigitalVideoDisc dvd = itemsOrdered[i];
+                System.out.printf("%d. DVD - %s - %s - %s - %d: %.2f $\n",
+                        i + 1, dvd.getTitle(), dvd.getCategory(), dvd.getDirector(),
+                        dvd.getLength(), dvd.getCost());
+            }
+            System.out.printf("Total cost: %.2f $\n", totalCost());
+            System.out.println("***************************************************");
+        }

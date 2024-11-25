@@ -7,8 +7,6 @@ public class Cart {
 	private DigitalVideoDisc itemOrdered[] = new DigitalVideoDisc[MAX_NUMBERS_ORDERED];
 	private int qtyOrdered;
 
-
-    //    topic/method-overloading
     public void addDigitalVideoDisc(DigitalVideoDisc disc) {
         if (qtyOrdered < MAX_NUMBERS_ORDERED) {
             itemOrdered[qtyOrdered] = disc;
@@ -19,23 +17,11 @@ public class Cart {
         }
 
 
-    // DigitalVideoDisc[] dvdList = {dvd1, dvd2, dvd3};
-    // cart.addDigitalVideoDisc(dvdList);
-    // public void addDigitalVideoDisc(DigitalVideoDisc[] dvdList) {
-    //     for (DigitalVideoDisc dvd : dvdList) {
-    //         addDigitalVideoDisc(dvd);
-    //     }
-    // }
-
-    // cart.addDigitalVideoDisc(dvd1, dvd2, dvd3);
-
-    
     public void addDigitalVideoDisc(DigitalVideoDisc... dvdArray) {
         for (DigitalVideoDisc dvd : dvdArray) {
             addDigitalVideoDisc(dvd); 
         }
     }
-    
 
 
     // cart.addDigitalVideoDisc(dvd1, dvd2);
@@ -43,11 +29,6 @@ public class Cart {
         addDigitalVideoDisc(dvd1);
         addDigitalVideoDisc(dvd2);
     }
-
-
-
-
-
 
 
     public void removeDigitalVideoDisc(DigitalVideoDisc disc) {

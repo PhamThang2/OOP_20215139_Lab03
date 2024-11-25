@@ -1,0 +1,64 @@
+6.1	Write, compile and run the ChoosingOption program:
+
+-	What happens if users choose “Cancel”?
+
+***** Hiện tại, phương thức được sử dụng:
+
+int option = JOptionPane.showConfirmDialog(null, 
+   "Do you want to change to the first class ticket?");
+
+showConfirmDialog có thể trả về ba giá trị:
+
+JOptionPane.YES_OPTION (là 0)
+JOptionPane.NO_OPTION (là 1)
+JOptionPane.CANCEL_OPTION (là 2)
+
+Nếu người dùng chọn "Cancel", giá trị trả về sẽ là JOptionPane.CANCEL_OPTION.
+
+Tuy nhiên, hiện tại, không có xử lý trường hợp người dùng chọn "Cancel". 
+
+Chỉ kiểm tra xem lựa chọn của người dùng là "Yes" hay "No".
+
+***** Để xử lý cả lựa chọn "Cancel", ta có thể:
+
+
+int option = JOptionPane.showConfirmDialog(null, 
+    "Do you want to change to the first class ticket?");
+
+if (option == JOptionPane.YES_OPTION) {
+    JOptionPane.showMessageDialog(null, "Bạn đã chọn: Yes");
+} else if (option == JOptionPane.NO_OPTION) {
+    JOptionPane.showMessageDialog(null, "Bạn đã chọn: No");
+} else if (option == JOptionPane.CANCEL_OPTION) {
+    JOptionPane.showMessageDialog(null, "Bạn đã chọn: Cancel");
+}
+
+System.exit(0);
+
+Code này sẽ xử lý trường hợp người dùng chọn "Cancel" và hiển thị thông báo tương ứng.
+
+-	How to customize the options to users, e.g. only two options: “Yes” and “No”, OR “I do” and “I don’t” (Suggestion: Use Javadocs or using Eclipse/Netbean IDE help). 
+
+
+BCó thể tùy chỉnh các nút trong JOptionPane bằng cách sử dụng phương thức showOptionDialog thay vì showConfirmDialog.
+Điều này cho phép chỉ định các nhãn tùy chỉnh cho các nút.
+
+Ví dụ: nếu chỉ có hai lựa chọn như "Yes" và "No", hoặc tùy chọn khác như "Tôi đồng ý" và "Tôi không đồng ý":
+
+
+Object[] options = {"Tôi đồng ý", "Tôi không đồng ý"};
+int option = JOptionPane.showOptionDialog(null, 
+    "Bạn có đồng ý với điều khoản không?",
+    "Hộp thoại tùy chọn", 
+    JOptionPane.YES_NO_OPTION, 
+    JOptionPane.QUESTION_MESSAGE, 
+    null, options, options[0]);
+
+if (option == 0) {
+    JOptionPane.showMessageDialog(null, "Bạn đã chọn: Tôi đồng ý");
+} else if (option == 1) {
+    JOptionPane.showMessageDialog(null, "Bạn đã chọn: Tôi không đồng ý");
+}
+
+System.exit(0);
+

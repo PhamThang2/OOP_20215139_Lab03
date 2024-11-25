@@ -1,0 +1,95 @@
+2. Working with method overloading
+So sánh:
+- Dùng mảng (DigitalVideoDisc[]):
+
+Khi sử dụng mảng làm tham số, cần chuẩn bị sẵn một mảng trước khi gọi phương thức.
+Cú pháp hơi dài hơn khi chỉ có một số lượng nhỏ DVD cần thêm.
+
+- Dùng số lượng đối số tùy ý (DigitalVideoDisc...):
+
+Dễ sử dụng hơn khi muốn truyền trực tiếp danh sách các đối tượng DVD.
+Cú pháp ngắn gọn hơn và linh hoạt hơn, không cần phải tạo mảng trước.
+
+==> Lựa chọn:
+Trong trường hợp này, mình thích phương pháp truyền số lượng đối số tùy ý (varargs) hơn vì:
+
+Tính linh hoạt cao.
+Cú pháp gọn gàng và dễ sử dụng hơn trong hầu hết các tình huống.
+
+
+3. Passing parameter
+
+- Tại sao sau khi gọi swap(jungleDVD, cinderellaDVD), tiêu đề (title) của hai đối tượng vẫn giữ nguyên?
+
+Trong Java, giá trị của tham chiếu (reference value) được truyền vào phương thức, không phải bản thân tham chiếu. 
+Nghĩa là khi gọi swap, phương thức nhận bản sao của giá trị tham chiếu.
+
+Trong phương thức swap:
+public static void swap(Object o1, Object o2) {
+    Object tmp = o1;
+    o1 = o2;
+    o2 = tmp;
+}
+
+o1 và o2 là bản sao của giá trị tham chiếu đến jungleDVD và cinderellaDVD.
+Bên trong phương thức, chỉ có các tham chiếu cục bộ o1, o2 bị hoán đổi. 
+Nhưng sự thay đổi này không ảnh hưởng đến các tham chiếu gốc (jungleDVD và cinderellaDVD) bên ngoài phương thức.
+
+Do đó, sau khi gọi swap, hai đối tượng jungleDVD và cinderellaDVD vẫn giữ nguyên tiêu đề ban đầu ("Jungle" và "Cinderella").
+
+
+- Tại sao sau khi gọi changeTitle(jungleDVD, cinderellaDVD.getTitle()), tiêu đề của jungleDVD lại bị thay đổi?
+
+Trong phương thức changeTitle:
+public static void changeTitle(DigitalVideoDisc dvd, String title) {
+    String oldTitle = dvd.getTitle();
+    dvd.setTitle(title); // Thay đổi nội dung của đối tượng được tham chiếu
+    dvd = new DigitalVideoDisc(oldTitle); // Gán một đối tượng mới cho tham chiếu cục bộ
+}
+
+Phân tích:
+
+dvd là bản sao của giá trị tham chiếu đến đối tượng jungleDVD. Ban đầu, dvd tham chiếu đến cùng một đối tượng với jungleDVD.
+
+Lệnh dvd.setTitle(title) thay đổi nội dung của đối tượng mà dvd đang tham chiếu. 
+Vì dvd và jungleDVD cùng tham chiếu đến một đối tượng, sự thay đổi này ảnh hưởng đến jungleDVD.
+
+Lệnh dvd = new DigitalVideoDisc(oldTitle) chỉ thay đổi tham chiếu cục bộ dvd để trỏ đến một đối tượng mới. 
+Tuy nhiên, tham chiếu gốc jungleDVD bên ngoài không bị ảnh hưởng.
+
+Do đó, tiêu đề của jungleDVD bị thay đổi bởi lệnh dvd.setTitle(title).
+
+*** KẾT LUẬN:
+- Phương thức swap:
+Chỉ làm thay đổi bản sao của tham chiếu, không tác động đến tham chiếu gốc.
+Kết quả: jungleDVD và cinderellaDVD không bị hoán đổi.
+
+- Phương thức changeTitle:
+Thay đổi nội dung của đối tượng jungleDVD thông qua tham chiếu (dvd.setTitle(title)).
+Nhưng việc gán dvd = new DigitalVideoDisc(oldTitle) không ảnh hưởng đến jungleDVD vì đây là thay đổi tham chiếu cục bộ.
+
+
+==> Java là Pass by Value, truyền giá trị của tham chiếu đối với các đối tượng.
+
+
+Cách viết phương thức swap()
+	public static void swap(Object o1, Object o2) {
+		Object temp = o1;
+		o1 = o2;
+		o2 = temp;
+	}
+
+Cách hoạt động của swap():
+
+Phương thức swap() nhận vào một mảng DigitalVideoDisc[] và hai chỉ số i, j.
+Hoán đổi hai phần tử trong mảng thông qua một biến tạm (temp).
+Tại sao cần dùng mảng?:
+
+Trong Java, khi bạn truyền một đối tượng, chỉ truyền giá trị tham chiếu (copy của địa chỉ).
+
+Nếu không dùng mảng hoặc wrapper thì không thể thay đổi trực tiếp tham chiếu bên ngoài phương thức.
+
+
+6. Open the Cart class
+
+Phương thức toString() có kiểu trả về là String.

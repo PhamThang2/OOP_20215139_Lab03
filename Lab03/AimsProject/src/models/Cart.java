@@ -72,3 +72,4 @@ public class Cart {
             System.out.printf("Total cost: %.2f $\n", totalCost());
             System.out.println("***************************************************");
         }
+   }

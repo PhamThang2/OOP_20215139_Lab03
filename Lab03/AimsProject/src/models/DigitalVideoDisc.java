@@ -1,6 +1,5 @@
 package models;
 
-
 public class DigitalVideoDisc {
 	private String title;
 	private String category;
@@ -8,6 +7,7 @@ public class DigitalVideoDisc {
 	private int length;
 	private float cost;
 
+	
 	public String getTitle() {
 		return title;
 	}
@@ -43,6 +43,7 @@ public class DigitalVideoDisc {
 		this.cost = cost;
 	}
 
+
 	public DigitalVideoDisc(String title, String category, String director, float cost) {
 		super();
 		this.title = title;
@@ -50,6 +51,7 @@ public class DigitalVideoDisc {
 		this.director = director;
 		this.cost = cost;
 	}
+
 
 	public DigitalVideoDisc(String title, String category, String director, int length, float cost) {
 		super();

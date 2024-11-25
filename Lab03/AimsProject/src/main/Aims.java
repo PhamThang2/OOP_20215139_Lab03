@@ -1,9 +1,7 @@
 package main;
 
-
 import models.Cart;
 import models.DigitalVideoDisc;
-
 
 public class Aims {
 
@@ -14,21 +12,16 @@ public class Aims {
 		anOrder.addDigitalVideoDisc(dvd1);
 
 
-
 		DigitalVideoDisc dvd2 = new DigitalVideoDisc("Star Wars", "Science Fiction", "Gergre Lucas", 87, 24.95f);
 		anOrder.addDigitalVideoDisc(dvd2);
-
 
 
 		DigitalVideoDisc dvd3 = new DigitalVideoDisc("Aladin", "Animation", 18.99f);
 		anOrder.addDigitalVideoDisc(dvd3);
 
 
-
 		System.out.println("Total Cost is: ");
 		System.out.println(anOrder.totalCost());
-
-		
 
 
 		anOrder.removeDigitalVideoDisc(dvd2);

@@ -16,7 +16,7 @@ public class Cart {
             System.out.println("The cart is almost full.");
         }
 
-
+    }
     public void addDigitalVideoDisc(DigitalVideoDisc... dvdArray) {
         for (DigitalVideoDisc dvd : dvdArray) {
             addDigitalVideoDisc(dvd); 
